@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 const input = document.querySelector('#fruit');
 const suggestions = document.querySelector('.suggestions ul');
-//const inputElement = document.getElementById('fruit');
 
 //event listener for key strokes
 input.addEventListener('keyup', function(event) {
@@ -14,7 +13,6 @@ input.addEventListener('keyup', function(event) {
 	const results = search(userInput);
 	console.log('filtered list:', results);
 
-	//const resultsList = document.getElementById('resultsList')
 
 });
 
@@ -97,9 +95,6 @@ function showSuggestions(results, inputVal) {
 		const index = itemText.indexOf(highlightedText);
 		if (index !== -1) {
 			item.classList.add('highlighted');
-			// const highlightedPart = itemText.substr(index, highlightedText.length);
-			// const highlightedItem = itemText.replace(highlightedPart, `<span class="highlighted">${highlightedPart}</span>`);
-			// item.innerHTML = highlightedItem;
 		} else {
 			item.classList.remove('highlighted');
 		}
