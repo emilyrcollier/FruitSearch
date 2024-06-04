@@ -70,20 +70,29 @@ return fruit.filter(item => {
 
 function searchHandler(e) {
 	// TODO
-const userInput = e.target.value;
+const userInput = e.target.value.toLowerCase().replace(/\W/g, '');
 const results = search(userInput);
 
 
 resultsElement.innerHTML = '';
 
-results.forEach(item => {
-	const div = document.createElement('div');
-	div.className = 'dropdown-item';
-	div.textContent = item;
-	resultsElement.appendChild(div);
+if (results.length > 0 && userInput !== '') {
+	resultsElement.style.display = 'block';
 
-});
+	results.forEach(item => { 
+		const div = document.createElement('div');
+		div.className = 'dropdown-item';
+		div.textContent = item;
+		resultsElement.appendChild(div);
+	
+	});
+	} else {
+		resultsElement.style.display = 'none';
+ 	}
+	
 }
+
+
 
 
 function showSuggestions(results, inputVal) {
@@ -112,6 +121,7 @@ function useSuggestion(e) {
 
 	if(clickedItem.classList.contains('dropdown-item')) {
 		inputElement.value = clickedItem.textContent;
+		resultsElement.style.display = 'none';
 	}
 }
 
